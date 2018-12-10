@@ -17,5 +17,6 @@ $person = new todo(array('text' => $text, 'archived' => true, "time" => "2018"))
     $fini = json_encode($arrayJson);
     var_dump($fini);
     file_put_contents($file, $fini);
+    header("Location: http://192.168.64.3/becode/projet-6-todolist/controllers/index.php");
 
 ?>
