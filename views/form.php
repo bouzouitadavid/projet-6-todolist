@@ -83,11 +83,11 @@ request.open('GET', "../models/todo.json");
 request.responseType = 'text';
 
 request.onload = function() {
-
+  count = request.response.split("},").length;
   val = request.responseText;
       val = JSON.parse(val)
-    //   console.log(val[1].text);
-      for (let i = 0; i < val.length ; i++) {
+    console.log(val);
+      for (let i = 0; i < count ; i++) {
             document.getElementById("demo").innerHTML += `<input type="checkbox" name="text[]" value="'.$key.'" id="text"><label>${val[i].text}</label><br>`
       }
 

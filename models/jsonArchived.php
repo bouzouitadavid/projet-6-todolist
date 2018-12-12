@@ -8,7 +8,7 @@ $values = array_values($keys)[0];
     $arrayJson = json_decode($fileJson, true);
     print_r($arrayJson);
     $arrayJson[$values]["archived"] = 0; // replace value to true
-    $encode = json_encode($arrayJson);
+    $encode = json_encode($arrayJson, JSON_FORCE_OBJECT);
     // var_dump($fini);
     file_put_contents($file, $encode);
     header("Location: http://192.168.64.3/becode/projet-6-todolist/controllers/index.php?play=1");

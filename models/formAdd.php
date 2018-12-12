@@ -17,7 +17,7 @@ class todo
 }
 $person = new todo(array('text' => $text, 'archived' => true, "time" => "2018"));
     array_push($arrayJson, $person);
-    $encode = json_encode($arrayJson);
+    $encode = json_encode($arrayJson, JSON_FORCE_OBJECT);
     // var_dump($fini);
     file_put_contents($file, $encode);
     echo $encode;
