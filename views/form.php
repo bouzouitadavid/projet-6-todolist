@@ -1,25 +1,8 @@
+<!-- Form pour archived -->
 <h3>Controller</h3>
-<div id="demo">Emplacement pour mes todo</div>
-
-<form method="post" action="../models/jsonArchived.php">
-
-<!-- <?php 
-// function putTodo() {
-//     $fileJson = file_get_contents("../models/todo.json");
-//     $arrayJson = json_decode($fileJson, true);
-//     foreach ($arrayJson as $key => $value) {
-//         $text = $arrayJson[$key]["text"];
-//         $archived = $arrayJson[$key]["archived"];
-//         if($archived == 1) {
-//             echo '<input type="checkbox" name="text[]" value="'.$key.'" id="text"><label>'.$text.'</label><br>';
-//         } else {
-//             echo '<input type="checkbox" name="text[]" value="todo" disabled="disabled"><label style="background-color:red; color:white">'.$text.'</label><br>';
-//         }
-//     }
-// }
-?> -->
-<!-- <input type="checkbox" name="text[]" value="todo" id="text"> -->
-<input type="submit" value="Archiver DONT TOUCH !!!">
+<form id="addArchived" enctype="multipart/form-data">
+<div id="todoList"></div><!-- emplacement pour mes todo -->
+<input type="submit" value="Archiver">
 </form>
 
 
@@ -33,65 +16,60 @@
 <!-- AJAX -->
 <script>
 window.addEventListener("load", function () {
-  function sendData() {
-    var XHR = new XMLHttpRequest();
-    var FD = new FormData(form);
-    XHR.addEventListener("load", function(event) {
-    //   alert(event.target.responseText);
-    //   console.log(event.target.responseText)
-    //   val = event.target.responseText;
-    //   val = JSON.parse(val)
-    // //   console.log(val[0].text);
-    //   for (let i = 0; i < 10; i++) {
-    //         document.getElementById("demo").innerHTML = val[i].text
-    //   }
-    });
-    XHR.addEventListener("error", function(event) {
-      alert('Oups! Quelque chose s\'est mal passé.');
-    });
-    XHR.open("POST", "../models/formAdd.php");
-    XHR.send(FD);
-  }
-  var form = document.getElementById("addTodo");
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendData();
-    load();
-  });
-  
-});
-</script>
-<!-- <script>
+	function sendData(method, target, form) {
+		let request = new XMLHttpRequest();
+		let FD = new FormData(form);
+		request.addEventListener("load", function(event) {
+		//   alert(event.target.responseText);
+		//   console.log(event.target.responseText)
+		});
+		request.addEventListener("error", function(event) {
+			alert('Oups! Quelque chose s\'est mal passé.');
+		});
+		request.open(method, target);
+		request.send(FD);
+	}
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("demo").innerHTML = 
-            }
-        };
-        xmlhttp.open("POST", "../models/formAdd.php");
-        xmlhttp.send();
+    // écoute sur l'ajout d'élément FORM
+    var formAdd = document.getElementById("addTodo");
+	formAdd.addEventListener("submit", function (event) {
+		// event.preventDefault();
+		sendData("POST", "../models/formAdd.php", formAdd);
+        document.getElementById("todo").value = "";
+		load();
+	}); // end sendData()
     
+    // écoute sur l'archivation FORM
+    var formArch = document.getElementById("addArchived");
+	formArch.addEventListener("submit", function (event) {
+		// event.preventDefault();
+		sendData("POST", "../models/jsonArchived.php", formArch);
+		load();
+	}); // end sendData()
+});// end écoute sur window load
 
-</script> -->
-<script>
+// charge les éléments et les affiches sur la page
 function load() {
-document.getElementById("demo").innerHTML = "";
+document.getElementById("todoList").innerHTML = "";
 var request = new XMLHttpRequest();
-request.open('GET', "../models/todo.json");
+request.open('POST', "../models/todo.json");
 request.responseType = 'text';
 
 request.onload = function() {
-  count = request.response.split("},").length;
-  val = request.responseText;
-      val = JSON.parse(val)
-    console.log(val);
-      for (let i = 0; i < count ; i++) {
-            document.getElementById("demo").innerHTML += `<input type="checkbox" name="text[]" value="'.$key.'" id="text"><label>${val[i].text}</label><br>`
-      }
-
+	count = request.response.split("},").length;
+	val = request.responseText;
+	val = JSON.parse(val)
+	console.log(val);
+		for (const key in val) {
+		    if(val[key].archived == 1) {
+						document.getElementById("todoList").innerHTML += `<input type="checkbox" name="text[${key}]" value="${val[key].text}" id="text"><label for="text[${key}]">${val[key].text}</label><br>`
+            } else {
+                        document.getElementById("todoList").innerHTML += `<input type="checkbox" name="text[${key}]" value="${val[key].text}" id="text" disabled="disabled"><label for="text[${key}]" style="background:red">${val[key].text}</label><br>`
+            }
+		}
 };
 request.send();
-}
+} //end load()
+// je lance load pour qu'elle se lance au lancement de la page
 load();
 </script>
