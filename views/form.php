@@ -32,13 +32,11 @@
 
 <!-- AJAX -->
 <script>
-
 window.addEventListener("load", function () {
   function sendData() {
     var XHR = new XMLHttpRequest();
     var FD = new FormData(form);
     XHR.addEventListener("load", function(event) {
-        document.getElementById("demo").innerHTML = "";
     //   alert(event.target.responseText);
     //   console.log(event.target.responseText)
     //   val = event.target.responseText;
@@ -78,6 +76,7 @@ window.addEventListener("load", function () {
 </script> -->
 <script>
 function load() {
+document.getElementById("demo").innerHTML = "";
 var request = new XMLHttpRequest();
 request.open('GET', "../models/todo.json");
 request.responseType = 'text';
@@ -94,4 +93,5 @@ request.onload = function() {
 };
 request.send();
 }
+load();
 </script>
