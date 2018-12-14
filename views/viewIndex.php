@@ -27,4 +27,5 @@
     <?php require("form.php"); ?> 
 </body>
 <footer></footer>
+<script src="../assets/script.js"></script>
 </html>

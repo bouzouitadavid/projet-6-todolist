@@ -1,9 +1,9 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* bouzouita david css
+*
+*
+*/
 
-// @import "compass/reset";
+@import "compass/reset";
 
 // FONT COLOR
 //color asset 0
@@ -21,6 +21,16 @@ $color-clear-2: #D8FFDD;
 $color-clear-3: #C3C49E;
 $color-dark-1: #8F7E4F;
 $color-dark-2: #524632;
+
+//bootstrap reset
+.form-check-input {
+    position: absolute;
+    margin-top: 0;
+}
+.form-check-label {
+        margin-bottom: 4px;
+}
+
 
 html {
     background: inherit;
@@ -63,6 +73,8 @@ body {
         width: 100%;
         h3{
             text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 7px;
         }
         .listGroup, .archivedGroup, .addGroup {
 
@@ -89,3 +101,4 @@ body {
     }
 
 }
+
