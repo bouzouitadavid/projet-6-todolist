@@ -19,11 +19,10 @@ if(isset($_POST["todo"]) && !empty($_POST["todo"])) {
                 $this->time = $data['time'];
             }
         }
-        $person = new todo(array('text' => $text, 'archived' => true, "time" => date("m.d.y")));
+        $person = new todo(array('text' => $text, 'archived' => true, "time" => time()));
             array_push($arrayJson, $person);
             $encode = json_encode($arrayJson, JSON_FORCE_OBJECT);
-            // var_dump($encode);
             file_put_contents($file, $encode);
-            // header("Location: http://192.168.64.3/becode/projet-6-todolist/controllers/index.php");
+            // header("Location: ../controllers/index.php");
 } // sinon ne rien faire
 ?>

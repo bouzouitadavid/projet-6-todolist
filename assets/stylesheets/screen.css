@@ -2,7 +2,66 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html {
+  background: inherit;
+}
+
+header {
+  font-family: "Shadows Into Light", cursive;
+  position: absolute;
+  top: -50px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
+  color: #512F4B;
+  font-family: "Nunito Sans", sans-serif;
   margin: auto;
-  width: 200px;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  flex-wrap: wrap;
+}
+
+.todoGroup {
+  position: relative;
+  transition: all 0.7s;
+  background: white;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.todoGroup .cardGroup {
+  width: 100%;
+}
+.todoGroup .cardGroup h3 {
+  text-align: center;
+}
+.todoGroup .cardGroup .listGroup, .todoGroup .cardGroup .archivedGroup, .todoGroup .cardGroup .addGroup {
+  transition: all 0.5s;
+  background: #DEDBD8;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.todoGroup .cardGroup .listGroup .btn, .todoGroup .cardGroup .archivedGroup .btn, .todoGroup .cardGroup .addGroup .btn {
+  width: 100%;
+}
+.todoGroup .cardGroup .listGroup:hover, .todoGroup .cardGroup .archivedGroup:hover, .todoGroup .cardGroup .addGroup:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 12px -8px grey;
+  margin-bottom: 30px;
+}
+.todoGroup .cardGroup .archivedGroup {
+  background: #D8FFDD;
+}
+.todoGroup .cardGroup .addGroup {
+  background: #C3C49E;
 }

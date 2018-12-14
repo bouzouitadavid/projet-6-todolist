@@ -5,7 +5,87 @@
 
 // @import "compass/reset";
 
+// FONT COLOR
+//color asset 0
+// $color-clear-1: #3EA0D7;
+// $color-clear-2: #D7BEE6;
+// $color-clear-3: #FBDCE6;
+// $color-dark-1: #512F4B;
+// $color-dark-2: #6F5578;
+$font-nunito: 'Nunito Sans', sans-serif;
+$font-shadows: 'Shadows Into Light', cursive;
+
+//color asset 1
+$color-clear-1: #DEDBD8;
+$color-clear-2: #D8FFDD;
+$color-clear-3: #C3C49E;
+$color-dark-1: #8F7E4F;
+$color-dark-2: #524632;
+
+html {
+    background: inherit;
+}
+
+header {
+    font-family: $font-shadows;
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
+    color: #512F4B;
+    font-family: $font-nunito;
     margin: auto;
-    width: 200px;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: inherit;
+    flex-wrap: wrap;
+}
+
+.todoGroup {
+    position: relative;
+    transition: all 0.7s;
+    background: white;
+    // border: 1px dotted $color-dark-2;
+    // border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .cardGroup {
+        width: 100%;
+        h3{
+            text-align: center;
+        }
+        .listGroup, .archivedGroup, .addGroup {
+
+            .btn{
+                width: 100%;
+            }
+            transition: all 0.5s;
+            background: $color-clear-1;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 12px 12px -8px grey;
+                margin-bottom: 30px;
+            }
+        }
+        .archivedGroup {
+            background: $color-clear-2;
+        }
+        .addGroup {
+            background: $color-clear-3;
+        }
+    }
+
 }
