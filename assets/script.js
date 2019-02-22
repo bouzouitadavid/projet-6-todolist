@@ -1,6 +1,7 @@
 // SCRIPT JS - JQUERY
+// David Bouzouita
 //
-// ********* FC LOAD *********
+// FORM CONTROLLERS 
 function load() {
 var request = new XMLHttpRequest();
 request.reponseType = "json";
@@ -23,13 +24,15 @@ request.onload = function() {
             }
 		}
 }
-request.open('POST', "../models/todo.json", true);
+request.open('POST', "models/todo.json", true);
 request.send();
 }
 load();
 
 // ********* AJAX *********
 window.addEventListener("load", function () {
+
+	// Function send data from ajax
 	function sendData(method, target, form) {
 		let request = new XMLHttpRequest();
 		let FD = new FormData(form);
@@ -48,32 +51,26 @@ window.addEventListener("load", function () {
     var formAdd = document.getElementById("addTodo");
 	formAdd.addEventListener("submit", function (event) {
 		event.preventDefault();
-		sendData("POST", "../models/formAdd.php", formAdd);
+		sendData("POST", "controllers/formAdd.php", formAdd);
         document.getElementById("todo").value = ""; // je vide le champ textarea
 		 setTimeout(() => {
 			load();
-		}, 100);
+		}, 200);
 	}); // end sendData()
     
     // écoute sur l'archivation FORM
     var formArch = document.getElementById("addArchived");
 	formArch.addEventListener("submit", function (event) {
 		event.preventDefault();
-		sendData("POST", "../models/jsonArchived.php", formArch);
+		sendData("POST", "controllers/jsonArchived.php", formArch);
 		setTimeout(() => {
 			load();
-		}, 100);
+		}, 200);
 	}); // end sendData()
 });
 // end écoute sur window load
 
-// ********* ANIMATE JQUERY *********
-$(".todo").click(function(){
-	alert("coco");
-});
-
-
-// ********* ECOUTE TEXTAREA *********
+// Text Area
 // supp le placeholder
 $("#todo").click((event) => {
     event.target.placeholder = "";

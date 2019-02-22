@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <!-- my css -->
-    <link href="../assets/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="../assets/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+    <link href="assets/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="assets/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
@@ -24,8 +24,8 @@
 </head>
 <header></header>
 <body>
-    <?php require("form.php"); ?> 
+    <?php require("views/form.php"); ?> 
 </body>
 <footer></footer>
-<script src="../assets/script.js"></script>
+<script src="assets/script.js"></script>
 </html>

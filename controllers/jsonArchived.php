@@ -2,9 +2,9 @@
 if(isset($_POST["text"])) {
 $text = $_POST["text"];
 foreach ($text as $key => $value) {
-    print_r($value."<br>");
-    $file = "todo.json";
-    $fileJson = file_get_contents("todo.json");
+    // print_r($value."<br>");
+    $file = "../models/todo.json";
+    $fileJson = file_get_contents("../models/todo.json");
     $arrayJson = json_decode($fileJson, true);
     // print_r($arrayJson);
     $arrayJson[$key]["archived"] = 0; // replace value to true

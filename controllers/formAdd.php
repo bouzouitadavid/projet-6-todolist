@@ -7,8 +7,8 @@ if(isset($_POST["todo"]) && !empty($_POST["todo"])) {
         if ($result != null AND $result != FALSE) {            
             $text = $result['todo'];
         }
-            $file = "todo.json";
-            $fileJson = file_get_contents("todo.json");
+            $file = "../models/todo.json";
+            $fileJson = file_get_contents("../models/todo.json");
             $arrayJson = json_decode($fileJson, true);
         class todo
         {
