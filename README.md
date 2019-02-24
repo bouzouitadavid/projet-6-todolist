@@ -22,6 +22,6 @@ Ajax, php, json, javascript, mvc, bootstrap, sass, compass
 
 ### To do
 - [ ] Add drag and drop
-- [ ] Correct the MVC folders and files position
+- [x] Correct the MVC folders and files position
 
 
